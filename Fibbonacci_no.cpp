@@ -12,8 +12,8 @@ public:
         if(mp.find(n)!=mp.end()){
             return mp[n];
         }
-        int a=fib_Number(n-1,mp);
-        int b=fib_Number(n-2,mp);
+        int a=fibNumber(n-1,mp);
+        int b=fibNumber(n-2,mp);
          mp[currKey]=a+b;
         return a+b;
     }
