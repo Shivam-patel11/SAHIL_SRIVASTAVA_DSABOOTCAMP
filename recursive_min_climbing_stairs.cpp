@@ -1,12 +1,12 @@
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
-        int a=ans(cost,0);
-        int b=ans(cost,1);
+        int startWithZero=findCost(cost,0);
+        int startWithOne=findCost(cost,1);
         // int b=mp[1];
-        return min(a,b);
+        return min(startWithZero,startWithOne);
     }
-int ans(vector<int>&cost,int currIndex){
+int findCost(vector<int>&cost,int currIndex){
       if(currIndex==cost.size()){
           return 0;
       }
@@ -15,8 +15,8 @@ int ans(vector<int>&cost,int currIndex){
     }
     // INT_MAX will give over flow
     
-    int onejump=cost[currIndex]+ans(cost,currIndex+1); 
-    int twojump=cost[currIndex]+ans(cost,currIndex+2);
+    int onejump=cost[currIndex]+findCost(cost,currIndex+1); 
+    int twojump=cost[currIndex]+findCost(cost,currIndex+2);
     return min(onejump,twojump);
     }
 };
