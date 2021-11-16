@@ -2,9 +2,9 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         unordered_map<int,int>mp;
-        return ans(0,nums,mp);
+        return maxProfit(0,nums,mp);
     }
-int ans(int currIndex,vector<int>&nums,unordered_map<int,int>&mp){
+int maxProfit(int currIndex,vector<int>&nums,unordered_map<int,int>&mp){
         if(currIndex >= nums.size()){
             return 0;
         }
@@ -12,9 +12,9 @@ int ans(int currIndex,vector<int>&nums,unordered_map<int,int>&mp){
     if(mp.find(currKey)!=mp.end()){
         return mp[currKey];
     }
-        int a=nums[currIndex]+ans(currIndex+2,nums,mp);
-        int b=ans(currIndex+1,nums,mp);
-        mp[currKey]=max(a,b);        
-        return max(a,b);
+        int robHouse=nums[currIndex]+maxProfit(currIndex+2,nums,mp);
+        int noRob=maxProfit(currIndex+1,nums,mp);
+        mp[currKey]=max(robHouse,noRob);        
+        return max(robHouse,noRob);
     }
 };
